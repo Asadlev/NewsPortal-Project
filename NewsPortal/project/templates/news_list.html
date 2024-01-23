@@ -1,0 +1,17 @@
+{% extends 'flatpages/default.html' %}
+
+
+
+{% block content %}
+    <div class="alert alert-warning mt-2">
+      <h1>Список новостей</h1>
+      <ul>
+        {% for news_item in news_list %}
+        <li>
+          <a href="{% url 'news_detail' news_item.id %}">{{ news_item.title }}</a>
+          ({{ news_item.pub_date|date:"d.m.Y" }}): {{ news_item.text|slice:":20" }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+{% endblock %}
